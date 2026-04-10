@@ -9,8 +9,14 @@ function Header(){
                 <BsJustify className="icon"/>
             </div>
 
-            <div className="search_icon text-lg cursor-pointer">
-                <BsSearch className="icon"/>
+            <div className="search_icon text-sm bg-stone-200 rounded-md px-3 py-2 flex items-center gap-2">
+                <BsSearch className=""/>
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="w-full bg-transparent
+                  placeholder:text-stone-400 focus:outline-none"
+                />
             </div>
 
             <div className="right_header flex gap-5 text-lg cursor-pointer">

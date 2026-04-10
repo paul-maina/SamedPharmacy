@@ -1,7 +1,7 @@
 
 import Header from './Components/Header'
 import Sidebar from './Components/Sidebar/Sidebar'
-import Home from './Components/Home'
+import Dashboard from "./Components/Dashboard/Grid"
 import './App.css'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
         <div className="grid grid-rows-[auto_1fr] h-full ">
           <Header/>
-          <Home/>
+          <Dashboard/>
         </div>
         
       </div>

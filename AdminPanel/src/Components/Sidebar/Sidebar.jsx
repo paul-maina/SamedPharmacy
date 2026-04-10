@@ -4,7 +4,7 @@ import { BsCart3, BsPersonCircle, BsGearFill, BsGrid3X3GapFill, BsCurrencyDollar
 
 function Sidebar(){
     return(
-        <aside className="w-[220px] h-full bg-black text-gray-300 overflow-y-scroll  ">
+        <aside className="w-[220px] h-screen bg-black text-gray-300 flex flex-col overflow-y-auto">
             
             <div className="p-4 m-4 flex flex-col items-center gap-3 ">
                 <BsPersonCircle className="icon text-4xl "/>
@@ -20,14 +20,14 @@ function Sidebar(){
             </div>
             */}
 
-                <ul className="sidebar_list text-sm font-medium space-y-1 sticky">
+                <ul className="sidebar_list text-sm font-medium space-y-4">
                     <li className="sidebar_list_item block p-2 hover:bg-gray-500">
                         <a href="" className="flex items-center gap-2 ">
                             <BsGrid1X2Fill className="icon"/>Dashboard
                         </a>
                     </li>
 
-                    <li className="sidebar_list_item block p-2 hover:bg-gray-500">
+                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
                         <a href="" className="flex items-center gap-2">
                             <BsArchiveFill className="icon"/>Products
                         </a>
@@ -40,35 +40,35 @@ function Sidebar(){
                     </li>*/}
         
 
-                    <li className="sidebar_list_item block p-2 hover:bg-gray-500">
+                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
                         <a href="" className="flex items-center gap-2">
                             <BsPeopleFill className="icon"/>Customers
                         </a>
                     </li>
                 
-                    <li className="sidebar_list_item block p-2 hover:bg-gray-500">
+                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
                         <a href="" className="flex items-center gap-2">
                             <BsCurrencyDollar className="icon"/>Sales
                         </a>
                     </li>
                 
-                    <li className="sidebar_list_item block p-2 hover:bg-gray-500">
+                    <li className="sidebar_list_item  p-2 hover:bg-gray-500">
                         <a href="" className="flex items-center gap-2">
                             <BsMenuButtonWideFill className="icon"/>Reports
                         </a>
                     </li>
             
-                    <li className="sidebar_list_item block p-2 hover:bg-gray-500">
+                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
                         <a href="" className="flex items-center gap-2">
                             <BsGearFill className="icon"/>Settings
                         </a>
                     </li>
                 </ul>
 
-                <div className="space-y-1 sticky mt-auto border-t px-2 justify-end text-xs">
-                    <div className="p-4 text-sm  block">Support</div>
-                    <div className="p-4 text-sm  block">User Profile</div>
-                    <div className="p-4 text-sm  block">Logout</div>
+                <div className="mt-auto border-t text-xs space-y-1">
+                    <div className="p-3 text-sm hover:bg-gray-500 cursor-pointer">Support</div>
+                    <div className="p-3 text-sm hover:bg-gray-500 cursor-pointer">User Profile</div>
+                    <div className="p-3 text-sm hover:bg-gray-500 cursor-pointer">Logout</div>
                 </div>
 
                 
