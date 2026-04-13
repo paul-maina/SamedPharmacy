@@ -1,4 +1,4 @@
-import { BsCart3, BsPersonCircle, BsGearFill, BsGrid3X3GapFill, BsCurrencyDollar, BsPeopleFill, BsGrid1X2Fill, BsMenuButtonWideFill,BsArchiveFill} from "react-icons/bs";
+import { BsCart3, BsPersonCircle, BsGearFill, BsCurrencyDollar, BsPeopleFill, BsGrid1X2Fill, BsMenuButtonWideFill,BsArchiveFill} from "react-icons/bs";
 
 
 
