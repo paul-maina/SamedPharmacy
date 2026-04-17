@@ -2,28 +2,67 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const connectDB = require("./config/db");
+const mongoose = require('mongoose')
 
 dotenv.config(); // Load .env file
 
-// Connect to DB
-connectDB();
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// Routes
-const medicineRoutes = require("./routes/medicineRoutes");
-app.use("/api/medicines", medicineRoutes);
 
-// Root route (optional test)
-app.get("/", (req, res) => {
-  res.send("API is running...");
+
+const schemaData = mongoose.Schema({
+  name : String,
+  email : String,
+  password: String,
+},{
+  timestamps: true
 });
 
+const userModel = mongoose.model("user",schemaData)
+
+app.get("/", async(req, res) => {
+  const data = await userModel.find({})
+  res.json({success : true, data : data});
+});
+
+
+app.post("/create", async(req,res)=>{
+  console.log(req.body)
+  const data = new userModel(req.body)
+  await data.save()
+  res.send({success : true, message :"data saved suucessfully", data : data} )
+})
+
+
+app.put("/update", async(req,res)=>{
+  console.log(req,body)
+  const {id,...rest} = req.body
+
+  console.log(rest)
+  const data = await userModel.updateOne({_id : id}, rest)
+  res.send({success : true, message :"data updated suucessfully", data : data })
+})
+
+
+app.delete("/delete/:id", async(req,res)=>{
+  const id = req.params.id
+  console.log(id)
+  const data = await userModel.deleteOne({_id : id})
+  res.send({success : true, message :"data deleted suucessfully", data : data} )
+})
+
+
+mongoose.connect(process.env.MONGO_URI)
+ .then(()=>{
+          console.log("Connected to Mongodb")
+          app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`))
+        })
+ .catch(err =>console.error("Connection error:",err))
+
 // Start server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+const PORT = process.env.PORT || 8080;
+
