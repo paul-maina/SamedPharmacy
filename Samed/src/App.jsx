@@ -4,6 +4,7 @@ import Home from "./Pages/Home"
 import MedicineList from "./Components/MedicineList";
 import Layout from "./Components/Layout";
 import Blogs from "./Pages/Blogs";
+import Account from "./Pages/Account";
 import Contact from "./Pages/Contact";
 import About from "./Pages/About"
 import NoPage from "./Pages/NoPage";
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="medicinelist" element={<MedicineList />} />
           <Route path="blogs" element={<Blogs />} />
+          <Route path="account" element={<Account />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
           <Route path="*" element={<NoPage />} />

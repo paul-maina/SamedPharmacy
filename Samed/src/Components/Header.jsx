@@ -49,7 +49,7 @@ function Header() {
                 </Link>
               </li>
               <li>
-                <Link to="/account" className="flex flex-col items-center cursor-pointer">
+                <Link to="/Account" className="flex flex-col items-center cursor-pointer">
                   <UserIcon className="w-5 h-5" />
                   <span className="text-xs sm:text-sm">Login</span>
                 </Link>
