@@ -1,82 +1,158 @@
-import { BsCart3, BsPersonCircle, BsGearFill, BsCurrencyDollar, BsPeopleFill, BsGrid1X2Fill, BsMenuButtonWideFill,BsArchiveFill} from "react-icons/bs";
+import { useState } from "react";
+import { BarChart3, UserCircle, ChevronDown, ChevronRight, LayoutDashboard, Package, ShoppingCart, Users, Settings,  HelpCircle,
+  LogOut } from "lucide-react";
 
 
 
-function Sidebar(){
-    return(
-        <aside className="w-[220px] h-screen bg-black text-gray-300 flex flex-col overflow-y-auto">
-            
-            <div className="p-4 m-4 flex flex-col items-center gap-3 ">
-                <BsPersonCircle className="icon text-4xl "/>
-                <div className="font-bold text-xl text-blue-500">SamAdmin</div> 
-            </div>
+const menuItems = [
+    {
+      title: "Dashboard",
+      icon: LayoutDashboard,
+      path: "/dashboard",
+    },
+    {
+    title: "Products",
+    icon: Package,
+    children: [
+      { title: "All Products", path: "/products/all" },
+      { title: "Add Product", path: "/products/add" },
+      { title: "Categories", path: "/products/categories" },
+      { title: "Brands", path: "/products/brands" },
+      { title: "Inventory", path: "/products/inventory" },
+    ],
+  },
+  {
+    title: "Customers",
+    icon: Users,
+    children: [
+      { title: "All Customers", path: "/customers/all" },
+      { title: "Customer Groups", path: "/customers/groups" },
+      { title: "Feedback", path: "/customers/feedback" },
+      { title: "Support Tickets", path: "/customers/support" },
+    ],
+  },
+  {
+    title: "Sales",
+    icon: ShoppingCart,
+    children: [
+      { title: "Orders", path: "/sales/orders" },
+      { title: "Transactions", path: "/sales/transactions" },
+      { title: "Invoices", path: "/sales/invoices" },
+      { title: "Discounts", path: "/sales/discounts" },
+    ],
+  },
+  {
+    title: "Reports",
+    icon: BarChart3,
+    children: [
+      { title: "Sales Reports", path: "/reports/sales" },
+      { title: "Customer Reports", path: "/reports/customers" },
+      { title: "Inventory Reports", path: "/reports/inventory" },
+      { title: "Revenue Analytics", path: "/reports/revenue" },
+    ],
+  },
+    
+];
 
-            {/*
-            <div className="sidebar_title flex justify-between align-center p-4">
-                <div className="sidebar_brand flex items-center font-bold text-xl gap-2">
-                    <BsCart3 className="icon_header"/>SHOP
+function Sidebar () {
+
+  const toggleMenu = (title) => {
+  setOpenMenu((prev) =>
+    prev[title] ? {} : { [title]: true }
+  );
+  };
+
+    const [activePage, setActivePage]= useState("Dashboard");
+    const [openMenu, setOpenMenu] = useState({})
+
+  return(
+        <div className="flex">
+            <aside className="w-64 h-screen bg-black text-gray-300 flex flex-col overflow-y-auto ">
+
+                <nav className="space-y-1">
+                    <div className="p-2 m-4 flex flex-col items-center gap-3 ">
+                      <UserCircle className="icon text-4xl "/>
+                      <div className="font-bold text-xl text-blue-500">SamAdmin</div> 
+                    </div>
+                    
+                    {menuItems.map((item) => {
+                        const Icon = item.icon;
+                        const children = item.children;
+                        const isOpen = openMenu[item.title];
+                        
+                        return(
+                            <div key={item.title}>
+                                <button 
+                                 onClick={()=>{
+                                    if (children){toggleMenu(item.title);}
+                                    else {setActivePage(item.title);}
+                                 }}   
+                                 className="items-center flex w-full p-2 ml-4 hover:bg-gray-500 transition gap-3 cursor-pointer"
+                                >
+                                    <Icon className="w-4 h-4"/>
+                                    <span> {item.title} </span>
+
+                                  {children &&(isOpen ?(
+                                    <ChevronDown className="w-5 h-5"/>)
+                                  : (
+                                    <ChevronRight className=""/>))}
+
+                                </button>
+
+                                {children && isOpen &&(
+                                  <div className="space-y-1 ml-10" >
+                                    {item.children.map((children) =>(
+                                      <button className="block text-sm hover:bg-gray-500 cursor-pointer w-full p-2 text-left"
+                                       key={children.title}
+                                       onClick={() => setActivePage(children.title)}
+                                      >
+                                        {children.title}
+                                      </button>
+                                    ))}
+                                  </div>
+
+                                )}
+                            </div>
+                            
+                        )    
+                    })}
+                </nav>
+
+                <div className="border-t border-gray-700 mt-auto">
+                  <button
+                    onClick={() => setActivePage("Settings")}
+                    className="flex items-center w-full p-2 hover:bg-gray-500 gap-3 cursor-pointer"
+                  >
+                    <Settings className="w-4 h-4" />
+                    <span>Settings</span>
+                    
+                  </button>
+                  <button
+                    onClick={() => setActivePage("Help")}
+                    className="flex items-center w-full p-2 hover:bg-gray-500 gap-3 cursor-pointer"
+                  >
+                    <HelpCircle className="w-4 h-4" />
+                    <span>Help</span>
+                    
+                  </button>
+                  <button
+                    onClick={() => setActivePage("Logout")}
+                    className="flex items-center w-full p-2 hover:bg-gray-500 gap-3 cursor-pointer"
+                  >
+                    <LogOut className="w-4 h-4" />
+                    <span>Logout</span>
+                    
+                  </button>
                 </div>
-                <span className="icon close_icon hidden">X</span>
-            </div>
-            */}
 
-                <ul className="sidebar_list text-sm font-medium space-y-4">
-                    <li className="sidebar_list_item block p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2 ">
-                            <BsGrid1X2Fill className="icon"/>Dashboard
-                        </a>
-                    </li>
-
-                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2">
-                            <BsArchiveFill className="icon"/>Products
-                        </a>
-                    </li>
-
-                    {/*<li className="sidebar_list_item block p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2">
-                            <BsGrid3X3GapFill className="icon"/>Categories
-                        </a>
-                    </li>*/}
-        
-
-                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2">
-                            <BsPeopleFill className="icon"/>Customers
-                        </a>
-                    </li>
-                
-                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2">
-                            <BsCurrencyDollar className="icon"/>Sales
-                        </a>
-                    </li>
-                
-                    <li className="sidebar_list_item  p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2">
-                            <BsMenuButtonWideFill className="icon"/>Reports
-                        </a>
-                    </li>
+            </aside>
             
-                    <li className="sidebar_list_item p-2 hover:bg-gray-500">
-                        <a href="" className="flex items-center gap-2">
-                            <BsGearFill className="icon"/>Settings
-                        </a>
-                    </li>
-                </ul>
-
-                <div className="mt-auto border-t text-xs space-y-1">
-                    <div className="p-3 text-sm hover:bg-gray-500 cursor-pointer">Support</div>
-                    <div className="p-3 text-sm hover:bg-gray-500 cursor-pointer">User Profile</div>
-                    <div className="p-3 text-sm hover:bg-gray-500 cursor-pointer">Logout</div>
-                </div>
-
-                
-        
-             
-            
-        </aside>
+            <main className="flex-1">
+                <div className="">main</div>
+            </main>
+        </div>
+    
     );
-};
+    };
 
 export default Sidebar;
