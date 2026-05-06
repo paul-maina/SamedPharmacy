@@ -1,22 +1,24 @@
-
+import { useState } from "react";
 
 import Header from './Components/Header'
 import Sidebar from './Components/Sidebar/Sidebar'
-import Dashboard from "./Components/Dashboard/Grid"
+import Layout from "./Components/Layout"
 import './App.css'
 
 function App() {
 
+  const [activePage, setActivePage] = useState("Dashboard");
+ 
   return (
-    <div className="grid_container">
+    <div className=" flex ">
       <div className="grid grid-cols-[256px_1fr] h-screen">
-      <Sidebar/>
+        <Sidebar setActivePage={setActivePage} />
 
-        <div className="grid grid-rows-[auto_1fr] h-full ">
+      <div className="grid grid-rows-[auto_1fr] w-screen h-full overflow-y-auto">
           <Header/>
-          
+         <Layout activePage={activePage} />
       
-        </div>
+      </div>
         
       </div>
       

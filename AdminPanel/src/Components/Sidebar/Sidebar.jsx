@@ -54,7 +54,7 @@ const menuItems = [
     
 ];
 
-function Sidebar () {
+function Sidebar ({ setActivePage }) {
 
   const toggleMenu = (title) => {
   setOpenMenu((prev) =>
@@ -62,7 +62,7 @@ function Sidebar () {
   );
   };
 
-    const [activePage, setActivePage]= useState("Dashboard");
+   
     const [openMenu, setOpenMenu] = useState({})
 
   return(
@@ -93,9 +93,9 @@ function Sidebar () {
                                     <span> {item.title} </span>
 
                                   {children &&(isOpen ?(
-                                    <ChevronDown className="w-5 h-5"/>)
+                                    <ChevronDown className="w-4 h-4"/>)
                                   : (
-                                    <ChevronRight className=""/>))}
+                                    <ChevronRight className="w-4 h-4"/>))}
 
                                 </button>
 
@@ -147,9 +147,7 @@ function Sidebar () {
 
             </aside>
             
-            <main className="flex-1">
-                <div className="">main</div>
-            </main>
+            
         </div>
     
     );

@@ -1,7 +1,7 @@
 
 
 
-
+{/*
 
 import { BsCart3, BsPersonCircle, BsGearFill, BsCurrencyDollar, BsPeopleFill, BsGrid1X2Fill, BsMenuButtonWideFill,BsArchiveFill} from "react-icons/bs";
 
@@ -16,14 +16,14 @@ function Sidebar(){
                 <div className="font-bold text-xl text-blue-500">SamAdmin</div> 
             </div>
 
-            {/*
+       
             <div className="sidebar_title flex justify-between align-center p-4">
                 <div className="sidebar_brand flex items-center font-bold text-xl gap-2">
                     <BsCart3 className="icon_header"/>SHOP
                 </div>
                 <span className="icon close_icon hidden">X</span>
             </div>
-            */}
+         
 
                 <ul className="sidebar_list text-sm font-medium space-y-4">
                     <li className="sidebar_list_item block p-2 hover:bg-gray-500">
@@ -42,7 +42,7 @@ function Sidebar(){
                         <a href="" className="flex items-center gap-2">
                             <BsGrid3X3GapFill className="icon"/>Categories
                         </a>
-                    </li>*/}
+                    </li>
         
 
                     <li className="sidebar_list_item p-2 hover:bg-gray-500">
@@ -85,6 +85,8 @@ function Sidebar(){
 };
 
 export default Sidebar;
+
+*/}
 
 
 
