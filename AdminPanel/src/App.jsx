@@ -10,11 +10,11 @@ function App() {
   const [activePage, setActivePage] = useState("Dashboard");
  
   return (
-    <div className=" flex ">
+    <div className="">
       <div className="grid grid-cols-[256px_1fr] h-screen">
         <Sidebar setActivePage={setActivePage} />
 
-      <div className="grid grid-rows-[auto_1fr] w-screen h-full overflow-y-auto">
+      <div className="grid grid-rows-[auto_1fr]  h-full ">
           <Header/>
          <Layout activePage={activePage} />
       
