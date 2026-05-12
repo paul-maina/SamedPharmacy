@@ -1,5 +1,5 @@
 import React from 'react';
-import Grid from "./Dashboard/Grid";
+import Grid from "./Dashboard/Grid"
 
 function Layout({ activePage }) {
   return (

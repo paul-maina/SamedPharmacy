@@ -4,7 +4,7 @@ function MedicineList() {
   const [medicines, setMedicines] = useState([]);
 
   useEffect(() => {
-    ffetch("https://animated-space-xylophone-97w7jrp997gjcx95v-5000.app.github.dev/api/medicines")
+    fetch("https://animated-space-xylophone-97w7jrp997gjcx95v-5000.app.github.dev/api/medicines")
   .then(res => res.json())
   .then(data => setMedicines(data))
   .catch(err => console.error("Error fetching medicines:", err));

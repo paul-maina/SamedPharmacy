@@ -1,4 +1,4 @@
-// backend/index.js
+
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
@@ -14,15 +14,9 @@ app.use(express.json());
 
 
 
-const schemaData = mongoose.Schema({
-  name : String,
-  email : String,
-  password: String,
-},{
-  timestamps: true
-});
 
-const userModel = mongoose.model("user",schemaData)
+
+
 
 app.get("/", async(req, res) => {
   const data = await userModel.find({})
@@ -30,7 +24,7 @@ app.get("/", async(req, res) => {
 });
 
 
-app.post("/create", async(req,res)=>{
+app.post("/", async(req,res)=>{
   console.log(req.body)
   const data = new userModel(req.body)
   await data.save()
@@ -63,6 +57,6 @@ mongoose.connect(process.env.MONGO_URI)
         })
  .catch(err =>console.error("Connection error:",err))
 
-// Start server
+
 const PORT = process.env.PORT || 8080;
 
