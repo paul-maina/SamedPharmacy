@@ -1,17 +1,6 @@
 
-
 import mongoose from "mongoose";
 
-const userSchema = mongoose.Schema(
-  {
-    name: String,
-    email: String,
-    password: String,
-  },
-  {
-    timestamps: true,
-  }
-);
 
 const productSchema = mongoose.Schema(
   {
@@ -24,10 +13,7 @@ const productSchema = mongoose.Schema(
   }
 );
 
-const userModel = mongoose.model("User", userSchema);
+
 const productModel = mongoose.model("Product", productSchema)
 
-export default {
-  userModel,
-  productModel,
-};
+export default productModel;

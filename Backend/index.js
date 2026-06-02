@@ -1,8 +1,10 @@
 
-const express = require("express");
-const dotenv = require("dotenv");
-const cors = require("cors");
-const mongoose = require('mongoose')
+import express from "express";
+import dotenv from "dotenv";
+import cors from"cors";
+import mongoose from 'mongoose';
+import connectCloudinary from "./config/cloudinary.js";
+import connectDB from "./config/db.js"
 
 dotenv.config(); // Load .env file
 
@@ -13,8 +15,10 @@ app.use(cors());
 app.use(express.json());
 
 
+connectDB ()
+connectCloudinary ()
 
-
+app.use('/api/')
 
 
 
