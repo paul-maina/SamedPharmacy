@@ -1,5 +1,5 @@
-import productModel from "./models/productModel.js";
-import cloudinary from "./config/cloudinary.js";
+import productModel from "../models/productModel.js";
+import cloudinary from "../config/cloudinary.js";
 
 const addProduct = async (req, res) => {
   try {
@@ -172,4 +172,4 @@ const getProduct = async (req, res) => {
 
 
 
-export default {addProduct,getProduct, updateProduct, deleteProduct, singleProduct}
+export {addProduct,getProduct, updateProduct, deleteProduct, singleProduct}
