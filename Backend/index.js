@@ -4,8 +4,9 @@ import dotenv from "dotenv";
 import cors from"cors";
 import mongoose from 'mongoose';
 import connectCloudinary from "./config/cloudinary.js";
-import connectDB from "./config/db.js"
+import connectDB from "./config/db.js";
 import productRouter from "./routes/productRouter.js";
+import userRouter from "./routes/userRouter.js";
 
 dotenv.config(); // Load .env file
 
@@ -21,6 +22,7 @@ connectDB ()
 connectCloudinary ()
 
 app.use("/api", productRouter);
+app.use("/api", userRouter)
 
 
 app.listen(PORT, () => {
